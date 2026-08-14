@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kindora is an accessible K–6 learning website with visual, audio-friendly and low-distraction activities.">
+  <title>Kindora Learning</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="brand" aria-label="Kindora Learning home">
+      <span class="brand-mark" aria-hidden="true">★</span>
+      <span>Kindora</span>
+    </div>
+    <nav aria-label="Main navigation">
+      <button class="nav-btn active" data-view="learn">Learn</button>
+      <button class="nav-btn" data-view="progress">My Progress</button>
+      <button class="nav-btn" data-view="parent">Parent / Teacher</button>
+    </nav>
+    <button class="access-btn" id="accessibilityBtn" aria-haspopup="dialog">Accessibility</button>
+  </header>
+
+  <main id="main">
+    <section id="learnView" class="view">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">K–6 learning made calmer</p>
+          <h1>Learn one small step at a time.</h1>
+          <p class="hero-copy">Short, encouraging activities for reading, math, science, writing and life skills.</p>
+          <div class="hero-actions">
+            <button class="primary" id="startBtn">Start learning</button>
+            <button class="secondary" id="todayBtn">Today's practice</button>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Today's progress">
+          <span class="hero-icon" aria-hidden="true">🌱</span>
+          <strong id="heroProgress">0%</strong>
+          <span>weekly goal</span>
+          <div class="progress-track"><div id="heroBar" class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Choose a level</p>
+          <h2>Grade & skill</h2>
+        </div>
+        <button class="text-btn" id="resetFilters">Reset filters</button>
+      </div>
+
+      <div class="grade-row" role="group" aria-label="Choose grade">
+        <button class="grade-chip active" data-grade="K">K</button>
+        <button class="grade-chip" data-grade="1">1</button>
+        <button class="grade-chip" data-grade="2">2</button>
+        <button class="grade-chip" data-grade="3">3</button>
+        <button class="grade-chip" data-grade="4">4</button>
+        <button class="grade-chip" data-grade="5">5</button>
+        <button class="grade-chip" data-grade="6">6</button>
+      </div>
+
+      <div class="subject-row" role="group" aria-label="Choose subject">
+        <button class="subject-chip active" data-subject="all">All</button>
+        <button class="subject-chip" data-subject="reading">📖 Reading</button>
+        <button class="subject-chip" data-subject="math">🔢 Math</button>
+        <button class="subject-chip" data-subject="science">🔬 Science</button>
+        <button class="subject-chip" data-subject="writing">✏️ Writing</button>
+        <button class="subject-chip" data-subject="life">🌎 Life Skills</button>
+      </div>
+
+      <section>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Activities</p>
+            <h2 id="activityHeading">Try an activity</h2>
+          </div>
+          <span class="result-count" id="resultCount"></span>
+        </div>
+        <div id="activityGrid" class="activity-grid"></div>
+      </section>
+    </section>
+
+    <section id="progressView" class="view hidden">
+      <div class="page-title">
+        <p class="eyebrow">Keep going</p>
+        <h1>My Progress</h1>
+        <p>Every completed activity is a step forward.</p>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card"><span>⭐</span><strong id="completedCount">0</strong><small>Activities completed</small></article>
+        <article class="stat-card"><span>🎯</span><strong id="accuracy">0%</strong><small>Answer accuracy</small></article>
+        <article class="stat-card"><span>🌱</span><strong id="streak">0</strong><small>Practice days</small></article>
+        <article class="stat-card"><span>🏅</span><strong id="badgeCount">0</strong><small>Badges earned</small></article>
+      </div>
+      <div class="panel">
+        <h2>Subject progress</h2>
+        <div id="subjectProgress"></div>
+      </div>
+      <div class="panel">
+        <h2>Encouragement</h2>
+        <div class="quote-card">“You don't have to get it right the first time. You just have to keep learning.”</div>
+      </div>
+    </section>
+
+    <section id="parentView" class="view hidden">
+      <div class="page-title">
+        <p class="eyebrow">Support at home or school</p>
+        <h1>Parent / Teacher Dashboard</h1>
+        <p>A simple snapshot of learning activity. This demo stores data in this browser only.</p>
+      </div>
+      <div class="panel">
+        <div class="dashboard-head">
+          <div><h2>Learning overview</h2><p id="lastPractice">No practice recorded yet.</p></div>
+          <button class="secondary" id="downloadReport">Download report</button>
+        </div>
+        <div id="dashboardTable" class="table-wrap"></div>
+      </div>
+      <div class="panel">
+        <h2>Suggested support</h2>
+        <div class="support-grid">
+          <div><strong>Keep sessions short</strong><p>Use a few focused activities, then offer a break.</p></div>
+          <div><strong>Use the same routine</strong><p>Predictable navigation can reduce unnecessary cognitive load.</p></div>
+          <div><strong>Celebrate effort</strong><p>Use specific encouragement for persistence and strategy.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="activityDialog">
+    <div id="activityContent"></div>
+    <button class="dialog-close" id="closeActivity" aria-label="Close activity">×</button>
+  </dialog>
+
+  <dialog id="accessibilityDialog">
+    <div class="dialog-body">
+      <p class="eyebrow">Personalize the experience</p>
+      <h2>Accessibility</h2>
+      <label class="toggle-row"><span><strong>Large text</strong><small>Increase reading size.</small></span><input type="checkbox" id="largeText"></label>
+      <label class="toggle-row"><span><strong>Reduce motion</strong><small>Use fewer animations.</small></span><input type="checkbox" id="reduceMotion"></label>
+      <label class="toggle-row"><span><strong>High contrast</strong><small>Increase visual contrast.</small></span><input type="checkbox" id="highContrast"></label>
+      <label class="toggle-row"><span><strong>Calm mode</strong><small>Hide decorative elements.</small></span><input type="checkbox" id="calmMode"></label>
+      <button class="primary full" id="closeAccessibility">Done</button>
+    </div>
+  </dialog>
+
+  <footer>
+    <span>Kindora Learning</span>
+    <span>Built with accessibility in mind.</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
