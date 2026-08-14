@@ -139,9 +139,9 @@ $("#accessibilityBtn").addEventListener("click", () => $("#accessibilityDialog")
 $("#closeAccessibility").addEventListener("click", () => { $("#accessibilityDialog").close(); save(); });
 $("#downloadReport").addEventListener("click", () => {
   const completed = Object.values(state.progress).filter(x=>x.completed).length;
-  const report = `BrightSteps Learning Report\n\nActivities completed: ${completed}\nGenerated: ${new Date().toLocaleString()}\n\nThis report is a local browser summary.`;
+  const report = `Kindora Learning Report\n\nActivities completed: ${completed}\nGenerated: ${new Date().toLocaleString()}\n\nThis report is a local browser summary.`;
   const blob = new Blob([report], {type:"text/plain"});
-  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="brightsteps-report.txt"; a.click(); URL.revokeObjectURL(a.href);
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="kindora-report.txt"; a.click(); URL.revokeObjectURL(a.href);
 });
 
 const settingMap = {largeText:"large-text", reduceMotion:"reduce-motion", highContrast:"high-contrast", calmMode:"calm-mode"};
